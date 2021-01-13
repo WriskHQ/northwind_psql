@@ -1,9 +1,9 @@
-# Northwind database for Postgres
+# Wrisk test
 
-A simple sql script that will populate a database with the famous northwind example,
-adapted for postgres.
+This repository contains the wrisk take home test. Below you will find how to get 
+started and then the question of the test itself.
 
-<img src=ER.png />
+![Er Diagram](ER.png)
 
 ## Getting started:
 
@@ -20,7 +20,7 @@ Use the provided sql file `nortwhind.sql` in order to populate your database.
  https://docs.docker.com/compose/install/
 
 
-#### 1. run docker-compose
+#### 1. Run docker-compose
 
 ```bash
 > docker-compose up
@@ -36,7 +36,7 @@ db_1  | 2019-11-28 21:07:14.364 UTC [1] LOG:  listening on Unix socket "/var/run
 db_1  | 2019-11-28 21:07:14.474 UTC [1] LOG:  database system is ready to accept connections
 ```
 
-#### 2. run psql client in the docker-compose container
+#### 2. Run psql client in the docker-compose container
 
 Open another terminal window, and type:
 
@@ -54,7 +54,10 @@ postgres=# select * from us_states;
         ...
 ````
 
-#### 3. stop docker-compose
+You can connect to the database from your local machine on port `32770` and the jdbc connection 
+string would be `jdbc:postgresql://localhost:32770/northwind`.
+
+#### 3. Stop docker-compose
 
 Stop the server that was launched by `docker compose up` via `Ctrl-C`, then remove the containers via:
 
@@ -64,3 +67,30 @@ docker-compose down
 
 Your modifications will be persisted in the `dabata/` local folder, and can be retrieved
 once you restart `docker compose up`.
+
+## The test
+
+Please provide the code, queries and output to the following.
+
+### Introduction
+
+* When was the first order placed?
+* Which customers have placed over 10 orders?
+
+### Reporting
+
+* Produce a report that, for each customer, calculates the total discounted price of all their 
+orders along with the total percentage discount they received
+* Produce a report that shows the number of orders along with the total value of orders for the customer
+with id 'SAVEA'. This report should include every month between 1996-01-01 and 1998-12-01.
+If they have not placed an order in any of the months then the number of orders and total value of orders should be 0.
+* Using a window function, produce a report that shows the id of each order placed, 
+the customer id for that order along with the last order id that the customer placed
+
+### Analysis
+
+* Is there any relationship between the region served by
+employees and the categories of products which they sell (by volume)?
+* What is the median average delay between order date and shipped date by shipping company?
+* Try to determine the factors that best explain the sales performance of employees as assessed by sales income
+

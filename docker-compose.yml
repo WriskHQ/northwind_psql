@@ -3,6 +3,8 @@ version: '3'
 services:
   db:
     image: postgres:12
+    ports:
+      - "32770:5432"
     environment:
       POSTGRES_DB: northwind
       POSTGRES_USER: northwind_user
